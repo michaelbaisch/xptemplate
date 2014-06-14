@@ -160,6 +160,9 @@ def run_tests(base, subpattern):
                                                 testname))
 
         test = load_test(os.path.join(tests_dir, testname))
+        if test[None][:1] == ['TODO']:
+            logger.info("SKIP: " + testname)
+            continue
 
         try_rm_rst(base)
 
@@ -182,7 +185,9 @@ def run_tests(base, subpattern):
 
 def load_test(testfn):
 
-    test = { 'setting': [],
+    # None for internal parameters
+    test = { None: [],
+             'setting': [],
              'localsetting': [],
              'keys': [],
              'expected': [], }
@@ -200,7 +205,7 @@ def load_test(testfn):
             continue
 
         test[state].append( line )
-        logger.info( '- ' + state + ': ' + repr(line) )
+        logger.info( '- ' + repr(state) + ': ' + repr(line) )
 
     test['expected'] = '\n'.join(test['expected'])
     return test
