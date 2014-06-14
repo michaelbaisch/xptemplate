@@ -167,6 +167,7 @@ def run_tests(base, subpattern):
         vim_add_rtp( base )
         vim_so_fn( os.path.join( base, "setting.vim" ) )
         vim_add_settings(test['setting'])
+        vim_add_local_settings(test['localsetting'])
         vim_load_content( os.path.join( base, "context" ) )
         tmux_keys( "s" )
 
@@ -182,6 +183,7 @@ def run_tests(base, subpattern):
 def load_test(testfn):
 
     test = { 'setting': [],
+             'localsetting': [],
              'keys': [],
              'expected': [], }
 
@@ -256,6 +258,11 @@ def vim_add_settings( settings ):
     for st in settings:
         tmux_keys(":set " + st + key['cr'] )
         logger.debug( "set: " + repr( st ) )
+
+def vim_add_local_settings( settings ):
+    for st in settings:
+        tmux_keys(":setlocal " + st + key['cr'] )
+        logger.debug( "setlocal: " + repr( st ) )
 
 def vim_key_sequence( fn ):
 
