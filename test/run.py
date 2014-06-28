@@ -310,6 +310,10 @@ def _check_rst(testname, expected, rst):
         raise TestError( testname, expected.split("\n"), rst.split("\n") )
 
 def tmux_setup():
+    try:
+        _tmux( "kill-pane", "-t", 1 )
+    except Exception as e:
+        pass
     _tmux( "split-window", "-h" )
     _tmux( "select-pane", "-t", 0 )
 
