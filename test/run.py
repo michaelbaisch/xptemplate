@@ -82,7 +82,7 @@ key = {
 
 
 def main( pattern, subpattern='*' ):
-    logger.info("start...")
+    logger.info("start ...")
     tmux_setup()
     try:
         run_all( pattern, subpattern )
@@ -121,7 +121,7 @@ def run_all( pattern, subpattern ):
 
 def run_case( cname, subpattern ):
 
-    logger.info( "running " + cname + "..." )
+    logger.info( "running " + cname + " ..." )
 
     base = os.path.join( ".", "test", "cases", cname )
 
@@ -156,7 +156,7 @@ def run_tests(base, subpattern):
         if not fnmatch.fnmatch( testname, subpattern ):
             continue
 
-        logger.info("running {0} {1}...".format(os.path.basename(base),
+        logger.info("running {0} {1} ...".format(os.path.basename(base),
                                                 testname))
 
         test = load_test(os.path.join(tests_dir, testname))
