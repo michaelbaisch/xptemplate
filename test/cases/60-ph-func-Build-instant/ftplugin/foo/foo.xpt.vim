@@ -22,5 +22,3 @@ XPT build-ph
 -`Build('\`ph\^')^-
 
 " TODO build edge with ph
-
-" post, ontype, edge, etc

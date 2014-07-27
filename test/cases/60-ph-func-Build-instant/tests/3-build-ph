@@ -1,0 +1,12 @@
+keys:
+build-ph
+	
+at_end
+
+build-ph
+on_ph	
+at_end
+
+expected:
+-ph-at_end
+-on_ph-at_end
